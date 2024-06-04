@@ -1,3 +1,21 @@
+"""
+
+
+
+
+
+
+
+
+
+
+
+
+
+algo.py
+"""
+
+
 import pytest
 import example
 
@@ -55,3 +73,11 @@ def test_the_result_is_correct_for_bogota():
     expected = 4.598077, -74.076102
     detected = example.get_coordinates("Bogotá, Colombia")
     assert near(detected, expected), "The result is not the expected one"
+
+
+"""
+algo comentario as
+
+
+
+"""
