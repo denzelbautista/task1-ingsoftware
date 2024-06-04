@@ -6,13 +6,6 @@ def get_coordinates(query):
     headers = {"User-Agent": "Testing App"}
     response = requests.get(api_url, headers=headers)
 
-
-
-
-
-
-
-
     response_data = response.json()
     """
     if not response_data:
