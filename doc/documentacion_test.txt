@@ -1,0 +1,83 @@
+Help on module test_example:
+
+NAME
+    test_example - Módulo de pruebas para example.py
+
+DESCRIPTION
+    Este módulo contiene pruebas unitarias para verificar el funcionamiento de las funciones en example.py.
+
+FUNCTIONS
+    near(point1, point2)
+        Función para verificar si dos puntos son cercanos, esta tiene un margen de error de 0.1, lo que significa
+        que si la diferencia entre los puntos es menor a 0.1, se consideran iguales.
+
+        Args:
+            point1 (tuple): Primer punto a comparar.
+            point2 (tuple): Segundo punto a comparar.
+
+        Returns:
+            bool: True si los puntos son cercanos, False en caso contrario.
+
+    test_can_call_existing_endpoints_of_the_API()
+        Test para probar si se puede llamar a los endpoints existentes de la API.
+
+        Args:
+            None
+
+        Returns:
+            None
+
+    test_cannot_call_nonexisting_endpoints_of_the_API()
+        Test para probar si no se puede llamar a los endpoints no existentes de la API.
+
+        Args:
+            None
+
+        Returns:
+            None
+
+    test_endpoint_returns_something()
+        Test para probar si el endpoint retorna algo.
+
+        Args:
+            None
+
+        Returns:
+            None
+
+    test_the_result_is_correct_for_bogota()
+        Test para verificar si las coordenadas obtenidas para Lima, Perú son correctas.
+
+        Args:
+            None
+        Returns:
+            None
+
+    test_the_result_is_correct_for_buenos_aires()
+        Test para verificar si las coordenadas obtenidas para Lima, Perú son correctas.
+
+        Args:
+            None
+        Returns:
+            None
+
+    test_the_result_is_correct_for_lima()
+        Test para verificar si las coordenadas obtenidas para Lima, Perú son correctas.
+
+        Args:
+            None
+        Returns:
+            None
+
+    test_the_result_is_correct_for_quito()
+        Test para verificar si las coordenadas obtenidas para Lima, Perú son correctas.
+
+        Args:
+            None
+        Returns:
+            None
+
+FILE
+    /home/denz/Denzel/UTEC/IngenieriadeSoftware/task1-ingsoftware/test/test_example.py
+
+
