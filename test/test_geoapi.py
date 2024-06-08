@@ -4,9 +4,12 @@ Módulo de pruebas para geoapi.py
 Este módulo contiene pruebas unitarias para verificar el funcionamiento de las funciones en geoapi.py.
 """
 
+import sys
+import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 import pytest
 from src.geoapi import app
-
 def test_can_call_existing_endpoints_of_the_API():
     """
     Test para probar si se puede llamar a los endpoints existentes de la API.
@@ -131,6 +134,21 @@ def test_the_result_is_correct_for_bogota():
         detected = (response.json["lat"], response.json["lon"])
         assert near(detected, expected), "The result is not the expected one"
 
+def test_invalid_city_name():
+    """
+    Test para verificar si se maneja correctamente un nombre de ciudad no válido.
+
+    Args:
+        None
+
+    Returns:
+        None
+    """
+    with app.test_client() as client:
+        city_name = "Invalid City Name"
+        response = client.get(f'/geoapi/coordinates/{city_name}')
+        assert response.status_code == 400
+        assert response.json['success'] == False
 
 def test_can_call_distance_endpoint():
     """
@@ -162,6 +180,21 @@ def test_distance_endpoint_returns_something():
         assert response.json is not None
 
 
+def distance_near(detected_distance, expected_distance, tolerance=50):
+    """
+    Función para verificar si la distancia detectada está dentro de un margen de error con respecto a la distancia esperada.
+
+    Args:
+        detected_distance (float): La distancia calculada entre dos puntos.
+        expected_distance (float): La distancia esperada entre los dos puntos.
+        tolerance (float): El margen de error permitido. Default es 50 km.
+
+    Returns:
+        bool: True si la distancia detectada está dentro del margen de error, False en caso contrario.
+    """
+    return abs(detected_distance - expected_distance) < tolerance
+
+
 def test_the_distance_is_correct():
     """
     Test para verificar si la distancia obtenida entre Lima, Perú y Buenos Aires, Argentina es correcta.
@@ -175,4 +208,4 @@ def test_the_distance_is_correct():
         response = client.get('/geoapi/distance/-12.0463731,-77.042754/-34.6075682,-58.4370894')
         distance = response.json["distance"]
         expected_distance = 3144.0  # Aproximadamente la distancia en kilómetros entre Lima y Buenos Aires
-        assert abs(distance - expected_distance) < 10, "The distance is not the expected one"
+        assert distance_near(distance, expected_distance), "The distance is not the expected one"

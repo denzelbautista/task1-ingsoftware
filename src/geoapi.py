@@ -49,6 +49,36 @@ def get_coordinates(city_country):
         return make_response(jsonify({"success": False, "error" : "It's not a city name or incorrect input"}), 400)
 
 
+@app.route("/geoapi/distance/<lat1_lon1>/<lat2_lon2>", methods=["GET"])
+def get_distance(lat1_lon1, lat2_lon2):
+    """
+    Este endpoint se encarga de obtener la distancia entre dos puntos geográficos
+    utilizando la libreria geopy para facilitar el cálculo.
+
+    Endpoint:
+        /geoapi/distance/{lat1_lon1}/{lat2_lon2}
+        
+    Args:
+        lat1_lon1 (str): Coordenadas del primer punto en formato "latitud, longitud".
+        lat2_lon2 (str): Coordenadas del segundo punto en formato "latitud, longitud".
+
+    Returns:
+        json: json con la distancia en la clave "distance" y las unidades en la clave "units".
+    """
+    # Separa las coordenadas en latitud y longitud
+    lat1, lon1 = lat1_lon1.split(',')
+    lat2, lon2 = lat2_lon2.split(',')
+
+    # Convierte las coordenadas a flotantes
+    lat1, lon1 = float(lat1), float(lon1)
+    lat2, lon2 = float(lat2), float(lon2)
+
+    # Calcula la distancia usando geopy
+    distance = geodesic((lat1, lon1), (lat2, lon2)).kilometers
+
+    # Devuelve la distancia calculada
+    return make_response(jsonify({"distance": distance, "units": "kilometers"}),200)
+
 
 if __name__ == "__main__":
     app.run()

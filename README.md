@@ -28,4 +28,10 @@ $ source .venv/Scripts/activate
 
 ```shell
 $ pip install -r requirements.txt
-```
+``` 
+
+4. Correr los tests
+
+```shell
+$ pytest --cov=src/geoapi --cov-report=term-missing test/test_geoapi.py
+``` 

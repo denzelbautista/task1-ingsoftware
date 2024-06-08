@@ -1,2 +1,2 @@
 coverage:
-	pytest --cov=example test_example.py
+	pytest --cov=src/geoapi test/test_geoapi.py
