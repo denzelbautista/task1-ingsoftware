@@ -1,21 +1,10 @@
 name: Lint
 
-on:
-  push:
-  pull_request:
+on: [push, pull_request]
 
 jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Install Black
-        run: pip install black
-      - name: Check code formatting
-        run: black --check .
-      - name: Fail if not formatted
-        run: |
-          if [ $? -ne 0 ]; then
-            echo "Code is not formatted correctly. Please run 'black .' to format your code."
-            exit 1
-          fi
+      - uses: psf/black@stable
