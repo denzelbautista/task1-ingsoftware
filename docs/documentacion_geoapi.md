@@ -14,7 +14,9 @@ con las funciones
     
 y 
 
-    get_distance respectivamente.
+    get_distance 
+    
+respectivamente.
 
 # FUNCTIONS
 
