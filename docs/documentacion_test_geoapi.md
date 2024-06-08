@@ -134,3 +134,13 @@ que si la diferencia entre los puntos es menor a 0.1, se consideran iguales.
             None
         Returns:
             None
+
+### 11
+    test_invalid_city_name():
+        Test para verificar si se maneja correctamente un nombre de ciudad no válido.
+
+        Args:
+            None
+    
+        Returns:
+            None
