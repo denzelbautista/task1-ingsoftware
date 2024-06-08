@@ -1,0 +1,9 @@
+# Este es mi archivo de CODEOWNERS
+# Revisar la documentación de la API
+docs/* @denzelbautista
+# Revisar el código de la API
+src/* @denzelbautista
+// Path: src/geoapi.py
+# Ejecutar los tests de la API
+tests/* @denzelbautista
+// Path: tests/test_geoapi.py
